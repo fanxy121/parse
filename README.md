@@ -1,10 +1,10 @@
 # Videoparse短视频解析接口文档
 
-## Videoparse(https://www.videoparse.cn) 短视频解析接口已支持：抖音、快手、剪映、小红书、Tiktok(抖音国际版)、微博、QQ看点视频、西瓜视频、今日头条、趣头条、火锅视频、美拍、微视、火山小视频、皮皮虾、好看视频、绿洲、VUE、秒拍、梨视频、刷宝短视频、全民小视频、陌陌视频、UC浏览器、Bilibili、WIDE、开眼、全民K歌、最右、小咖秀、皮皮搞笑、小影、新片场、场库、阳光宽频网等超过30个平台的短视频去水印解析API接口
+## Videoparse(https://www.videoparse.cn) 短视频解析接口已支持：抖音、快手、剪映、小红书、Tiktok、微博、QQ看点视频、西瓜视频、今日头条、趣头条、火锅视频、美拍、微视、火山小视频、皮皮虾、好看视频、绿洲、VUE、秒拍、梨视频、刷宝、全民小视频、陌陌视频、UC浏览器、Youtube、轻视频、Bilibili、茄子短视频、灵感、WIDE、开眼、全民K歌、最右、小咖秀、皮皮搞笑、AcFun、网易云音乐、咪咕圈圈、梨涡、小影、新片场、场库、阳光宽频网等超过40个平台的短视频去水印解析。
 
 
 ### 一. 解析短视频接口
-**URL：https://api-sv.videoparse.cn/api/video/normalParse**  
+**请求地址：https://api-sv.videoparse.cn/api/video/normalParse**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
@@ -112,7 +112,7 @@ Python实例代码:
 
 
 ### 二. 解析短视频接口 - 安全版
-**URL：https://api-sv.videoparse.cn/api/video/parse**  
+**请求地址：https://api-sv.videoparse.cn/api/video/parse**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
@@ -243,7 +243,7 @@ PHP EXAMPLE：
 	print_r($videoInfo);
 
 ### 三. 获取开发者信息接口
-**URL：https://api-sv.videoparse.cn/api/user/getInfo**  
+**请求地址：https://api-sv.videoparse.cn/api/user/getInfo**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
