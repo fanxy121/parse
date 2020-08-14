@@ -1,10 +1,10 @@
 # Videoparse短视频解析接口文档
 
-## Videoparse(https://www.videoparse.cn) 短视频解析接口已支持：抖音、快手、小红书、西瓜视频、今日头条、微视、火山小视频、陌陌视频、映客视频、小咖秀、开眼、全民小视频、全民K歌、最右、小影、微博、美拍、皮皮虾等平台的短视频去水印解析API接口
+## Videoparse(https://www.videoparse.cn) 短视频解析接口已支持：抖音、快手、剪映、小红书、Tiktok、微博、QQ看点视频、西瓜视频、今日头条、趣头条、火锅视频、美拍、微视、火山小视频、皮皮虾、好看视频、绿洲、VUE、秒拍、梨视频、刷宝、全民小视频、陌陌视频、UC浏览器、Youtube、轻视频、Bilibili、茄子短视频、灵感、WIDE、开眼、全民K歌、最右、小咖秀、皮皮搞笑、AcFun、网易云音乐、咪咕圈圈、梨涡、小影、新片场、场库、阳光宽频网等超过40个平台的短视频去水印解析。
 
 
 ### 一. 解析短视频接口
-**URL：https://api-sv.videoparse.cn/api/video/normalParse**  
+**请求地址：https://api-sv.videoparse.cn/api/video/normalParse**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
@@ -61,60 +61,58 @@ PHP EXAMPLE：
 	print_r($videoInfo);
 
 Python实例代码:
-	
-	#!/usr/bin/env python
-	# encoding: utf-8
 
-	import requests, urllib, json
+  
+    #!/usr/bin/env python
+    # encoding: utf-8
 
-	appId = ""
-	appSecret = ""
-	url = ""
+    import requests, urllib, json
 
-	params = {
-	    "appId": appId,
-	    "appSecret": appSecret,
-	    "url": url
-	}
-
-	api_url = "https://api-sv.videoparse.cn/api/video/normalParse"
-
+    appId = ""
+    appSecret = ""
+    params = {
+       "appid": appId,
+       "appsecret": appSecret,
+       "url":"",
+    }
 	def get(url):
-	    '''
+        params["url"] = url;
+        api_url = "https://api-sv.videoparse.cn/api/video/normalParse?" + urllib.parse.urlencode(params)
 
-	    :param url:
-	    :return:
-	    '''
+        msg = {"code": 0, "msg": "", "body": ""}
+
+        response = requests.get(url=api_url, timeout=30)
+
+        if response.status_code != 200:
+		 	msg['code'] = 1
+		 	msg["msg"] = "请求出现问题"
+		 	return msg
+	    # result = json.loads(response.text)      如果你直接拿到系统中使用请将返回参数直接转为json
+	   	result = response.text  # 如果你不需要转换json，则直接接受数据并返回
+	   	return result
+
+
+	def post(url):
+	    params["url"] = url
+	    api_url = "https://api-sv.videoparse.cn/api/video/normalParse"
+
 	    msg = {"code": 0, "msg": "", "body": ""}
-	    url = url + "?" + urllib.parse.urlencode(params)
-	    response = requests.get(url=url, timeout=30)
+
+	    response = requests.post(url=api_url, data=params, timeout=30)
 	    if response.status_code != 200:
-		msg['code'] = 1
-		msg["msg"] = "请求出现问题"
-		return msg
+		 	msg['code'] = 1
+		  	msg["msg"] = "请求出现问题"
+		  	return msg
 	    # result = json.loads(response.text)      如果你直接拿到系统中使用请将返回参数直接转为json
 	    result = response.text  # 如果你不需要转换json，则直接接受数据并返回
 	    return result
 
-	def post(url, data):
-	    '''
-	    :param url:
-	    :param data:
-	    :param headers:
-	    :return:
-	    '''
-	    msg = {"code": 0, "msg": "", "body": ""}
-	    response = requests.post(url=url, data=data, timeout=30)
-	    if response.status_code != 200:
-		msg['code'] = 1
-		msg["msg"] = "请求出现问题"
-		return msg
-	    #result = json.loads(response.text)      如果你直接拿到系统中使用请将返回参数直接转为json
-	    result = response.text                  # 如果你不需要转换json，则直接接受数据并返回
-	    return result
+	##print(get("https://v.douyin.com/JJTDEKL/"))
+	#print(post("https://v.douyin.com/JJTDEKL/"))
+
 
 ### 二. 解析短视频接口 - 安全版
-**URL：https://api-sv.videoparse.cn/api/video/parse**  
+**请求地址：https://api-sv.videoparse.cn/api/video/parse**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
@@ -245,7 +243,7 @@ PHP EXAMPLE：
 	print_r($videoInfo);
 
 ### 三. 获取开发者信息接口
-**URL：https://api-sv.videoparse.cn/api/user/getInfo**  
+**请求地址：https://api-sv.videoparse.cn/api/user/getInfo**  
 **请求方式：GET/POST**  
 **请求参数：**  
 
